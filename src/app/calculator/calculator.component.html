@@ -1,16 +1,7 @@
 
 <div class="flex justify-center flex-col md:flex-row">
-<div class="text-7xl">{{calculation?.firstDigit}} {{calculation?.operator}} {{calculation?.secondDigit}} =</div>
- <mat-form-field>
-  <mat-label>Enter the result</mat-label>
-  <input matInput placeholder="" [formControl]="resultControl" required appearance="outline">
-   <button mat-icon-button matSuffix (click)="check()" >
-     <mat-icon>start</mat-icon>
-   </button>
-  @if (resultControl.invalid) {
-  <mat-error>Error</mat-error>
-  }
-</mat-form-field>
+<div class="text-7xl">{{calculation?.firstDigit}} {{calculation?.operator}} {{calculation?.secondDigit}} = {{result}}</div>
+
 
 </div>
 
@@ -20,4 +11,4 @@
   }
 
 </div>
-
+<app-num-pad (numberTapped)="addToResult($event)" (clear)="result = 0" (delete)="deleteDigit()" (submit)="check()"></app-num-pad>
