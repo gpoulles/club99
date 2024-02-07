@@ -1,10 +1,15 @@
 
 <main>
-  <div class="container mx-auto">
-    @if(index<10){
-    <app-calculator [calculation]="calculations[index]" (nextCalculation)="index = index+1"></app-calculator>
+  <div class="container mx-auto h-screen flex justify-center items-center">
+    @if(index !== undefined && index<10){
+    <app-calculator [calculation]="calculations[index]" [results]="results" (nextCalculation)="addResult($event)" ></app-calculator>
     }@else {
-    <button mat-button color="primary" (click)="restart()">Restart</button>
+    <div class="flex flex-col gap-4">
+      <button mat-raised-button color="primary" (click)="restart('+')">Start '+'</button>
+      <button mat-raised-button color="primary" (click)="restart('-')">Start '-'</button>
+      <button mat-raised-button color="primary" (click)="restart('*')">Start '*'</button>
+      <button mat-raised-button color="primary" (click)="restart('/')" disabled>Start '/'</button>
+    </div>
     }
   </div>
 </main>
