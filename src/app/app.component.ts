@@ -42,26 +42,30 @@ export class AppComponent {
       let firstDigit= Math.floor(Math.random() * 10) ;
       let secondDigit= Math.floor(Math.random() * 10) ;
       let result = 0;
+      let operatorSign = '+';
       switch(operator){
-        case '+':
+        case 'addition':
           result = firstDigit + secondDigit;
           break;
-        case '-':
+        case 'subtraction':
           result = firstDigit - secondDigit;
+          operatorSign = '-';
           break;
-        case '*':
+        case 'multiplication':
           result = firstDigit * secondDigit;
+          operatorSign = '×';
           break;
-        case '/':
+        case 'division':
           // TODO switch digits if second one is bigger than first
           result = firstDigit / secondDigit;
+          operatorSign = '÷';
           break;
         default:
           result = firstDigit + secondDigit;
           break;
       }
 
-      calculations.push({firstDigit, secondDigit, operator, result });
+      calculations.push({firstDigit, secondDigit, operator: operatorSign, result });
       i++;
     }
     return calculations;

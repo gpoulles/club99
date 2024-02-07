@@ -5,10 +5,10 @@
     <app-calculator [calculation]="calculations[index]" [results]="results" (nextCalculation)="addResult($event)" ></app-calculator>
     }@else {
     <div class="flex flex-col gap-4">
-      <button mat-raised-button color="primary" (click)="restart('+')">Start '+'</button>
-      <button mat-raised-button color="primary" (click)="restart('-')">Start '-'</button>
-      <button mat-raised-button color="primary" (click)="restart('*')">Start '*'</button>
-      <button mat-raised-button color="primary" (click)="restart('/')" disabled>Start '/'</button>
+      <button mat-raised-button color="primary" (click)="restart('addition')">Start +</button>
+      <button mat-raised-button color="primary" (click)="restart('subtraction')">Start -</button>
+      <button mat-raised-button color="primary" (click)="restart('multiplication')">Start ×</button>
+      <button mat-raised-button color="primary" (click)="restart('division')" disabled>Start ÷</button>
     </div>
     }
   </div>
