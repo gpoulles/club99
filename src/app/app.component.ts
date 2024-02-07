@@ -5,11 +5,12 @@ import {Calculation} from "./interfaces/calculation.interface";
 import {CommonModule} from "@angular/common";
 import {MatButton} from "@angular/material/button";
 import {Result} from "./interfaces/result.interface";
+import {MatSnackBar, MatSnackBarModule} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CalculatorComponent, CommonModule, MatButton],
+  imports: [RouterOutlet, CalculatorComponent, CommonModule, MatButton, MatSnackBarModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -20,6 +21,9 @@ export class AppComponent {
   index: number| undefined = undefined;
   results: Result[] =[];
 
+  constructor(private _snackBar: MatSnackBar) {
+  }
+
   restart(operator:string){
     this.index = 0;
     this.results = [];
@@ -28,9 +32,14 @@ export class AppComponent {
 
   addResult($event: boolean){
     if(this.index!==undefined) {
-      if($event)  this.index++;
-      console.log($event);
-      console.log(this.index);
+      if($event){
+        this.index++;
+        this._snackBar.open('Awesome', 'Undo', {
+          duration: 3000,
+          verticalPosition: "top"
+        });
+      }
+
       this.results.push({result: $event, index: this.index});
     }
   }
@@ -39,8 +48,9 @@ export class AppComponent {
     let calculations: Calculation[] = [];
     let i = 0;
     while(i<10){
-      let firstDigit= Math.floor(Math.random() * 10) ;
-      let secondDigit= Math.floor(Math.random() * 10) ;
+
+      const { firstDigit, secondDigit } = this.getDigits(operator);
+
       let result = 0;
       let operatorSign = '+';
       switch(operator){
@@ -69,5 +79,22 @@ export class AppComponent {
       i++;
     }
     return calculations;
+  }
+
+  private getDigits(operator: string){
+    let firstDigit= Math.floor(Math.random() * 10) ;
+    let secondDigit= Math.floor(Math.random() * 10) ;
+    switch(operator){
+      case "subtraction":
+        while(firstDigit<secondDigit){
+          firstDigit= Math.floor(Math.random() * 10) ;
+          secondDigit= Math.floor(Math.random() * 10) ;
+        }
+        break;
+      case "division":
+        // TODO: make sure that division is integer
+        break;
+    }
+    return {firstDigit, secondDigit};
   }
 }
