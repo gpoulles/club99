@@ -1,0 +1,14 @@
+<div class="flex justify-center">
+<div class="text-7xl">{{calculation?.firstDigit}} {{calculation?.operator}} {{calculation?.secondDigit}} =</div>
+ <mat-form-field>
+  <mat-label>Enter the result</mat-label>
+  <input matInput placeholder="" [formControl]="result" required appearance="outline">
+  @if (result.invalid) {
+  <mat-error>Error</mat-error>
+  }
+</mat-form-field>
+<button mat-raised-button color="primary" (click)="check()">Check</button>
+</div>
+@if(showError){
+<div class="text-5xl flex justify-center text-red-900">Wrong. Try again!</div>
+}
