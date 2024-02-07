@@ -10,7 +10,7 @@ import {MatInputModule} from "@angular/material/input";
   standalone: true,
   imports: [MatButtonModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule, FormsModule],
   templateUrl: './calculator.component.html',
-  styleUrl: './calculator.component.css'
+  styleUrl: './calculator.component.scss'
 })
 export class CalculatorComponent implements OnInit {
   @Input() calculation: Calculation | undefined;

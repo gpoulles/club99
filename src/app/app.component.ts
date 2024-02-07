@@ -10,7 +10,7 @@ import {MatButton} from "@angular/material/button";
   standalone: true,
   imports: [RouterOutlet, CalculatorComponent, CommonModule, MatButton],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit{
   title = 'math';
