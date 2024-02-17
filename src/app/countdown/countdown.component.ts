@@ -1,7 +1,6 @@
 import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {interval, Subject, takeUntil} from "rxjs";
-import * as dayjs from 'dayjs';
-import duration from 'dayjs/plugin/duration';
+import { Duration } from "luxon";
 
 @Component({
   selector: 'app-countdown',
@@ -25,8 +24,9 @@ export class CountdownComponent implements OnInit, OnDestroy{
   getDuration(leftDuration: number){
     this.currentRestDuration = this.maxDuration-(leftDuration*1000);
     this.duration.emit(this.currentRestDuration);
-    dayjs.extend(duration);
-    return dayjs.duration(this.currentRestDuration).format('mm:ss');
+    const duration = Duration.fromMillis(this.currentRestDuration);
+    return duration.toFormat('mm:ss');
+
   }
 
   ngOnDestroy(){
