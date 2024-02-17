@@ -6,11 +6,16 @@ import {CommonModule} from "@angular/common";
 import {MatButton} from "@angular/material/button";
 import {Result} from "./interfaces/result.interface";
 import {MatSnackBar, MatSnackBarModule} from "@angular/material/snack-bar";
+import {Operators} from "./enums/operators.enum";
+import {NinetyNineClubServiceService} from "./services/ninety-nine-club.service";
+import { HttpClientModule} from "@angular/common/http";
+import {catchError} from "rxjs";
+import {MatIcon} from "@angular/material/icon";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CalculatorComponent, CommonModule, MatButton, MatSnackBarModule],
+    imports: [RouterOutlet, CalculatorComponent, CommonModule, MatButton, MatSnackBarModule, HttpClientModule, MatIcon],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -18,10 +23,11 @@ export class AppComponent {
   title = 'math';
   calculations: Calculation[] = [];
   currentCalculation: Calculation | undefined;
-  index: number| undefined = undefined;
+  index: number = 0;
   results: Result[] =[];
+  club= Array(9).fill(11).map((x,i)=>(i+1)*x);
 
-  constructor(private _snackBar: MatSnackBar) {
+  constructor(private _snackBar: MatSnackBar, private ninetyNineClubService: NinetyNineClubServiceService) {
   }
 
   restart(operator:string){
@@ -44,6 +50,32 @@ export class AppComponent {
     }
   }
 
+  goBack($event: boolean){
+    this.calculations = [];
+    this.index = 0;
+  }
+
+  async startClub(x: number) {
+
+    const data$ = this.ninetyNineClubService.loadData(x)
+    data$.subscribe( {next:(calculations: Calculation[]) => {
+      console.log(calculations);
+      this.calculations = calculations;
+      this.index = 0;
+      this.results = [];
+    }, error: (error) => {
+        this._snackBar.open(error.message, 'Undo', {
+          duration: 3000,
+          verticalPosition: "top"
+        });
+
+    }});
+  }
+
+  public outOf(): string{
+    return (this.index+1) + '/' + this.calculations.length;
+  }
+
   private createCalculations(operator: string){
     let calculations: Calculation[] = [];
     let i = 0;
@@ -51,31 +83,7 @@ export class AppComponent {
 
       const { firstDigit, secondDigit } = this.getDigits(operator);
 
-      let result = 0;
-      let operatorSign = '+';
-      switch(operator){
-        case 'addition':
-          result = firstDigit + secondDigit;
-          break;
-        case 'subtraction':
-          result = firstDigit - secondDigit;
-          operatorSign = '-';
-          break;
-        case 'multiplication':
-          result = firstDigit * secondDigit;
-          operatorSign = '×';
-          break;
-        case 'division':
-          // TODO switch digits if second one is bigger than first
-          result = firstDigit / secondDigit;
-          operatorSign = '÷';
-          break;
-        default:
-          result = firstDigit + secondDigit;
-          break;
-      }
-
-      calculations.push({firstDigit, secondDigit, operator: operatorSign, result });
+      calculations.push({firstDigit, secondDigit, operator });
       i++;
     }
     return calculations;
@@ -85,13 +93,13 @@ export class AppComponent {
     let firstDigit= Math.floor(Math.random() * 10) ;
     let secondDigit= Math.floor(Math.random() * 10) ;
     switch(operator){
-      case "subtraction":
+      case Operators.MULTIPLICATION:
         while(firstDigit<secondDigit){
           firstDigit= Math.floor(Math.random() * 10) ;
           secondDigit= Math.floor(Math.random() * 10) ;
         }
         break;
-      case "division":
+      case Operators.DIVISION:
         // TODO: make sure that division is integer
         break;
     }

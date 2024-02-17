@@ -1,14 +1,22 @@
 
 <main>
-  <div class="container mx-auto h-screen flex justify-center items-center">
-    @if(index !== undefined && index<10){
-    <app-calculator [calculation]="calculations[index]" [results]="results" (nextCalculation)="addResult($event)" ></app-calculator>
+  <div class="container mx-auto h-screen flex flex-col justify-center items-center">
+    @if(calculations.length && index<calculations.length){
+
+    <app-calculator [calculation]="calculations[index]" [results]="results" [outOf]="outOf()" (nextCalculation)="addResult($event)" (cancel)="goBack($event)" ></app-calculator>
     }@else {
-    <div class="flex flex-col gap-4">
+    <h2>Random Calulations</h2>
+    <div class="flex  gap-4 mb-8">
       <button mat-raised-button color="primary" (click)="restart('addition')">Start +</button>
       <button mat-raised-button color="primary" (click)="restart('subtraction')">Start -</button>
       <button mat-raised-button color="primary" (click)="restart('multiplication')">Start ×</button>
       <button mat-raised-button color="primary" (click)="restart('division')" disabled>Start ÷</button>
+    </div>
+    <h2>Club 99</h2>
+    <div class="grid grid-cols-5 mt-4 gap-4">
+      @for(clubIndex of club; track clubIndex){
+        <button mat-raised-button color="primary" (click)="startClub(clubIndex)">Start {{clubIndex}} Club</button>
+      }
     </div>
     }
   </div>

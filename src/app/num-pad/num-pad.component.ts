@@ -36,6 +36,7 @@ export class NumPadComponent implements OnInit, AfterViewInit {
   ngOnInit(){
     const zero = this.numbers.splice(0, 1)[0];
     this.numbers.push(zero);
+
   }
 
   ngAfterViewInit() {

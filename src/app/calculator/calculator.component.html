@@ -1,14 +1,14 @@
-
+<div class="flex justify-between items-center">
+  <button mat-icon-button color="primary" (click)="cancel.emit(true)"><mat-icon>chevron_left</mat-icon></button>
+  <div class="text-slate-600">{{outOf}}</div>
+</div>
 <div class="flex justify-center flex-col md:flex-row">
-<div class="text-7xl">{{calculation?.firstDigit}} {{calculation?.operator}} {{calculation?.secondDigit}} = {{result}}</div>
-
-
+  <div class="text-5xl">{{calculation.firstDigit}} {{getOperationSymbol()}} {{calculation.secondDigit}} = {{result}}</div>
 </div>
 
 <div class="flex justify-center gap-1">
   @for (result of results; track result.index) {
     <div class="dot rounded-full" [class.bg-red-500]="!result.result" [class.bg-green-500]="result.result"></div>
   }
-
 </div>
 <app-num-pad (numberTapped)="addToResult($event)" (clear)="result = 0" (delete)="deleteDigit()" (submit)="check()"></app-num-pad>

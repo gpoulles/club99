@@ -1,0 +1,168 @@
+[
+  {
+    "firstDigit": 2,
+    "secondDigit": 10,
+    "operator": "multiplication"
+  },
+  {
+    "firstDigit": 2,
+    "secondDigit": 2,
+    "operator": "multiplication"
+  },
+  {
+    "firstDigit": 3,
+    "secondDigit": 3,
+    "operator": "multiplication"
+  },
+  {
+    "firstDigit": 7,
+    "secondDigit": 2,
+    "operator": "multiplication"
+  },
+  {
+    "firstDigit": 7,
+    "secondDigit": 5,
+    "operator": "multiplication"
+  },
+  {
+    "firstDigit": 4,
+    "secondDigit": 2,
+    "operator": "multiplication"
+  },
+  {
+    "firstDigit": 3,
+    "secondDigit": 10,
+    "operator": "multiplication"
+  },
+  {
+    "firstDigit": 6,
+    "secondDigit": 2,
+    "operator": "multiplication"
+  },
+
+  {
+    "firstDigit": 8,
+    "secondDigit": 5,
+    "operator": "multiplication"
+  },
+  {
+    "firstDigit": 7,
+    "secondDigit": 10,
+    "operator": "multiplication"
+  },
+  {
+    "firstDigit": 5,
+    "secondDigit": 3,
+    "operator": "multiplication"
+  },
+  {
+    "firstDigit": 9,
+    "secondDigit": 2,
+    "operator": "multiplication"
+  },
+  {
+    "firstDigit": 9,
+    "secondDigit": 5,
+    "operator": "multiplication"
+  },
+  {
+    "firstDigit": 3,
+    "secondDigit": 4,
+    "operator": "multiplication"
+  },
+  {
+    "firstDigit": 9,
+    "secondDigit": 10,
+    "operator": "multiplication"
+  },
+  {
+    "firstDigit": 3,
+    "secondDigit": 5,
+    "operator": "multiplication"
+  },
+  {
+    "firstDigit": 5,
+    "secondDigit": 4,
+    "operator": "multiplication"
+  },
+  {
+    "firstDigit": 10,
+    "secondDigit": 2,
+    "operator": "multiplication"
+  },
+  {
+    "firstDigit": 3,
+    "secondDigit": 2,
+    "operator": "multiplication"
+  },
+  {
+    "firstDigit": 6,
+    "secondDigit": 5,
+    "operator": "multiplication"
+  },
+  {
+    "firstDigit": 10,
+    "secondDigit": 6,
+    "operator": "multiplication"
+  },
+  {
+    "firstDigit": 2,
+    "secondDigit": 5,
+    "operator": "multiplication"
+  },
+  {
+    "firstDigit": 2,
+    "secondDigit": 4,
+    "operator": "multiplication"
+  },
+  {
+    "firstDigit": 5,
+    "secondDigit": 5,
+    "operator": "multiplication"
+  },
+  {
+    "firstDigit": 8,
+    "secondDigit": 2,
+    "operator": "multiplication"
+  },
+  {
+    "firstDigit": 2,
+    "secondDigit": 3,
+    "operator": "multiplication"
+  },
+  {
+    "firstDigit": 4,
+    "secondDigit": 10,
+    "operator": "multiplication"
+  },
+  {
+    "firstDigit": 4,
+    "secondDigit": 3,
+    "operator": "multiplication"
+  },
+  {
+    "firstDigit": 6,
+    "secondDigit": 4,
+    "operator": "multiplication"
+  },
+  {
+    "firstDigit": 8,
+    "secondDigit": 10,
+    "operator": "multiplication"
+  },
+  {
+    "firstDigit": 10,
+    "secondDigit": 5,
+    "operator": "multiplication"
+  },
+  {
+    "firstDigit": 4,
+    "secondDigit": 4,
+    "operator": "multiplication"
+  },
+  {
+    "firstDigit": 10,
+    "secondDigit": 10,
+    "operator": "multiplication"
+  }
+]
