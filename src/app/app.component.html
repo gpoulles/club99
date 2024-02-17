@@ -1,10 +1,13 @@
 
 <main>
   <div class="container mx-auto h-screen flex flex-col justify-center items-center">
-    @if(calculations.length && index<calculations.length){
-      <app-countdown></app-countdown>
-      <app-calculator [calculation]="calculations[index]" [results]="results" [outOf]="outOf()" (nextCalculation)="addResult($event)" (cancel)="goBack($event)" ></app-calculator>
-    }@else {
+    @if(calculations.length){
+      <app-countdown (duration)="setCurrentDuration($event)"></app-countdown>
+      <app-calculator [calculation]="calculations[index]" [results]="results" [outOf]="outOf()" (nextCalculation)="addResult($event)" (cancel)="reset($event)" ></app-calculator>
+    }@else if(!calculations.length && results.length){
+      <app-results [results]="results" (back)="reset($event)"></app-results>
+    }
+    @else {
     <h2>Random Calulations</h2>
     <div class="flex  gap-4 mb-8">
       <button mat-raised-button color="primary" (click)="restart('addition')">Start +</button>

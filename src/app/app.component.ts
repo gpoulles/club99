@@ -12,11 +12,12 @@ import { HttpClientModule} from "@angular/common/http";
 import {catchError} from "rxjs";
 import {MatIcon} from "@angular/material/icon";
 import {CountdownComponent} from "./countdown/countdown.component";
+import {ResultsComponent} from "./results/results.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-    imports: [RouterOutlet, CalculatorComponent, CountdownComponent, CommonModule, MatButton, MatSnackBarModule, HttpClientModule, MatIcon],
+    imports: [RouterOutlet, CalculatorComponent, CountdownComponent, ResultsComponent, CommonModule, MatButton, MatSnackBarModule, HttpClientModule, MatIcon],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -26,6 +27,7 @@ export class AppComponent {
   currentCalculation: Calculation | undefined;
   index: number = 0;
   results: Result[] =[];
+  currentDuration: number = 0;
   club= Array(9).fill(11).map((x,i)=>(i+1)*x);
 
   constructor(private _snackBar: MatSnackBar, private ninetyNineClubService: NinetyNineClubServiceService) {
@@ -38,7 +40,7 @@ export class AppComponent {
   }
 
   addResult($event: boolean){
-    if(this.index!==undefined) {
+    this.results.push({result: $event, index: this.index, calculation: this.calculations[this.index], timestamp: this.currentDuration });
       if($event){
         this.index++;
         this._snackBar.open('Awesome', 'Undo', {
@@ -47,13 +49,13 @@ export class AppComponent {
         });
       }
 
-      this.results.push({result: $event, index: this.index});
-    }
+      if(this.index === this.calculations.length) this.calculations = [];
   }
 
-  goBack($event: boolean){
+  reset($event: boolean){
     this.calculations = [];
     this.index = 0;
+    this.results = [];
   }
 
   async startClub(x: number) {
@@ -74,6 +76,10 @@ export class AppComponent {
 
   public outOf(): string{
     return (this.index+1) + '/' + this.calculations.length;
+  }
+
+  public setCurrentDuration($event: number){
+    this.currentDuration = $event;
   }
 
   private createCalculations(operator: string){
