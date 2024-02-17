@@ -11,11 +11,12 @@ import {NinetyNineClubServiceService} from "./services/ninety-nine-club.service"
 import { HttpClientModule} from "@angular/common/http";
 import {catchError} from "rxjs";
 import {MatIcon} from "@angular/material/icon";
+import {CountdownComponent} from "./countdown/countdown.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-    imports: [RouterOutlet, CalculatorComponent, CommonModule, MatButton, MatSnackBarModule, HttpClientModule, MatIcon],
+    imports: [RouterOutlet, CalculatorComponent, CountdownComponent, CommonModule, MatButton, MatSnackBarModule, HttpClientModule, MatIcon],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -59,7 +60,6 @@ export class AppComponent {
 
     const data$ = this.ninetyNineClubService.loadData(x)
     data$.subscribe( {next:(calculations: Calculation[]) => {
-      console.log(calculations);
       this.calculations = calculations;
       this.index = 0;
       this.results = [];

@@ -24,12 +24,6 @@ export class CalculatorComponent {
 
   result: number = 0;
 
-  constructor() {
-    console.log("constructor call");
-  }
-
-  goBack(){}
-
   check(){
     switch(this.calculation.operator){
       case Operators.ADDITION:

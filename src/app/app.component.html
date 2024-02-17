@@ -2,8 +2,8 @@
 <main>
   <div class="container mx-auto h-screen flex flex-col justify-center items-center">
     @if(calculations.length && index<calculations.length){
-
-    <app-calculator [calculation]="calculations[index]" [results]="results" [outOf]="outOf()" (nextCalculation)="addResult($event)" (cancel)="goBack($event)" ></app-calculator>
+      <app-countdown></app-countdown>
+      <app-calculator [calculation]="calculations[index]" [results]="results" [outOf]="outOf()" (nextCalculation)="addResult($event)" (cancel)="goBack($event)" ></app-calculator>
     }@else {
     <h2>Random Calulations</h2>
     <div class="flex  gap-4 mb-8">
