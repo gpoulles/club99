@@ -18,13 +18,14 @@ export class CountdownComponent implements OnInit, OnDestroy{
   durationLabel: string = "00:00";
   currentRestDuration: number = 0;
   ngOnInit(){
-    dayjs.extend(duration);
+
     interval(1000).pipe(takeUntil(this.destroy$)).subscribe({next: (value)=>{this.durationLabel = this.getDuration(value)}});
   }
 
   getDuration(leftDuration: number){
     this.currentRestDuration = this.maxDuration-(leftDuration*1000);
     this.duration.emit(this.currentRestDuration);
+    dayjs.extend(duration);
     return dayjs.duration(this.currentRestDuration).format('mm:ss');
   }
 
