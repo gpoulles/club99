@@ -24,9 +24,8 @@ export class CountdownComponent implements OnInit, OnDestroy{
   getDuration(leftDuration: number){
     this.currentRestDuration = this.maxDuration-(leftDuration*1000);
     this.duration.emit(this.currentRestDuration);
-    const duration = Duration.fromMillis(this.currentRestDuration);
+    const duration = Duration.fromMillis(Math.abs(this.currentRestDuration));
     return duration.toFormat('mm:ss');
-
   }
 
   ngOnDestroy(){

@@ -6,11 +6,12 @@ import {CommonModule} from "@angular/common";
 import {NumPadComponent} from "../num-pad/num-pad.component";
 import {Operators} from "../enums/operators.enum";
 import {MatButtonModule} from "@angular/material/button";
+import {MatProgressBarModule} from "@angular/material/progress-bar";
 
 @Component({
   selector: 'app-calculator',
   standalone: true,
-  imports: [ MatIconModule, CommonModule, NumPadComponent, MatButtonModule],
+  imports: [ MatIconModule, CommonModule, NumPadComponent, MatButtonModule, MatProgressBarModule],
   templateUrl: './calculator.component.html',
   styleUrl: './calculator.component.scss'
 })
@@ -18,6 +19,7 @@ export class CalculatorComponent {
   @Input() calculation: Calculation = {firstDigit:0, secondDigit:0, operator:'addition'};
   @Input() results: Result[] = [];
   @Input() outOf: string = "";
+  @Input() progress: number = 0;
   @Output() nextCalculation: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() cancel: EventEmitter<boolean> = new EventEmitter<boolean>();
 

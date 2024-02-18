@@ -28,6 +28,7 @@ export class AppComponent {
   currentCalculation: Calculation | undefined;
   index: number = 0;
   results: Result[] =[];
+  progress: number = 0;
   currentDuration: number = 0;
   club= Array(9).fill(11).map((x,i)=>(i+1)*x);
 
@@ -42,21 +43,25 @@ export class AppComponent {
 
   addResult($event: boolean){
     this.results.push({result: $event, index: this.index, calculation: this.calculations[this.index], timestamp: this.currentDuration });
-      if($event){
-        this.index++;
-        this._snackBar.open('Awesome', 'Undo', {
-          duration: 3000,
-          verticalPosition: "top"
-        });
-      }
+    this.progress = this.results.filter(x => x.result).length/this.calculations.length*100;
 
-      if(this.index === this.calculations.length) this.calculations = [];
+
+    if($event){
+      this.index++;
+      this._snackBar.open('Awesome', 'Undo', {
+        duration: 3000,
+        verticalPosition: "top"
+      });
+    }
+
+    if(this.index === this.calculations.length) this.calculations = [];
   }
 
   reset($event: boolean){
     this.calculations = [];
     this.index = 0;
     this.results = [];
+    this.progress = 0;
   }
 
   async startClub(x: number) {

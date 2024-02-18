@@ -13,7 +13,10 @@ import {MatButtonModule} from "@angular/material/button";
 })
 export class ResultsComponent {
   @Input() results: Result[] = [];
+
   @Output() back: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-
+  getSuccessRate():number{
+    return Math.floor(this.results.filter(x => x.result).length/this.results.length*100);
+  }
 }

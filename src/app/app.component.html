@@ -2,7 +2,7 @@
 <main>
   <div class="container mx-auto h-screen flex flex-col justify-center items-center">
     @if(calculations.length){
-    <mat-card>
+    <mat-card class="min-w-96">
     <mat-card-content>
     <div class="flex justify-between items-center">
   <button mat-icon-button color="primary" (click)="reset(true)"><mat-icon>chevron_left</mat-icon></button>
@@ -10,7 +10,7 @@
   <div class="text-slate-600">{{outOf()}}</div>
 </div>
 
-      <app-calculator [calculation]="calculations[index]" [results]="results" [outOf]="outOf()" (nextCalculation)="addResult($event)" (cancel)="reset($event)" ></app-calculator>
+      <app-calculator [calculation]="calculations[index]" [results]="results" [outOf]="outOf()" (nextCalculation)="addResult($event)" (cancel)="reset($event)" [progress]="progress" ></app-calculator>
       </mat-card-content>
     </mat-card>
     }@else if(!calculations.length && results.length){

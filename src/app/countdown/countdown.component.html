@@ -1,1 +1,1 @@
-<div class="text-xl">{{durationLabel}}</div>
+<div class="text-xl" [class.text-red-600]="currentRestDuration<0">@if(currentRestDuration<0){+}{{durationLabel}}</div>
