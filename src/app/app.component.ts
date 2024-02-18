@@ -3,7 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import {CalculatorComponent} from "./calculator/calculator.component";
 import {Calculation} from "./interfaces/calculation.interface";
 import {CommonModule} from "@angular/common";
-import {MatButton} from "@angular/material/button";
+import {MatButton, MatIconButton} from "@angular/material/button";
 import {Result} from "./interfaces/result.interface";
 import {MatSnackBar, MatSnackBarModule} from "@angular/material/snack-bar";
 import {Operators} from "./enums/operators.enum";
@@ -13,11 +13,12 @@ import {catchError} from "rxjs";
 import {MatIcon} from "@angular/material/icon";
 import {CountdownComponent} from "./countdown/countdown.component";
 import {ResultsComponent} from "./results/results.component";
+import {MatCardModule} from "@angular/material/card";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-    imports: [RouterOutlet, CalculatorComponent, CountdownComponent, ResultsComponent, CommonModule, MatButton, MatSnackBarModule, HttpClientModule, MatIcon],
+  imports: [RouterOutlet, CalculatorComponent, CountdownComponent, ResultsComponent, CommonModule, MatButton, MatSnackBarModule, MatIcon, MatCardModule, MatIconButton],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
