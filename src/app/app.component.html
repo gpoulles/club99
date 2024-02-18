@@ -27,7 +27,7 @@
     <h2>Club 99</h2>
     <div class="grid grid-cols-5 mt-4 gap-4">
       @for(clubIndex of club; track clubIndex){
-        <button mat-raised-button color="primary" (click)="startClub(clubIndex)">Start {{clubIndex}} Club</button>
+        <button mat-raised-button color="primary" (click)="startClub(clubIndex)">{{clubIndex}} Club</button>
       }
     </div>
     }
