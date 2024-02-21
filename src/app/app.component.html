@@ -1,6 +1,6 @@
 
 <main>
-  <div class="container mx-auto h-screen flex flex-col justify-center items-center">
+  <div class="container mx-auto h-screen flex flex-col justify-center items-center my-10">
     @if(calculations.length){
     <mat-card class="min-w-96">
     <mat-card-content>
@@ -17,7 +17,7 @@
       <app-results [results]="results" (back)="reset($event)"></app-results>
     }
     @else {
-    <div class="grid grid-cols-3 gap-4">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
     <mat-card>
       <mat-card-header>
     <mat-card-title>Random Calulations</mat-card-title>

@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Calculation} from "../interfaces/calculation.interface";
 import {MatIconModule} from "@angular/material/icon";
 import {Result} from "../interfaces/result.interface";
@@ -24,7 +24,7 @@ export class CalculatorComponent {
   @Output() cancel: EventEmitter<boolean> = new EventEmitter<boolean>();
 
 
-  result: number = 0;
+  result: number | undefined = undefined;
 
   check(){
     switch(this.calculation.operator){
@@ -46,7 +46,7 @@ export class CalculatorComponent {
         break;
 
     }
-    this.result = 0;
+    this.result = undefined;
   }
 
   getOperationSymbol(): string {
@@ -65,11 +65,13 @@ export class CalculatorComponent {
   }
 
   addToResult($event: number){
+    if(this.result === undefined) this.result = 0;
     this.result = (this.result*10) + $event;
   }
 
   deleteDigit(){
-    this.result = Math.floor(this.result / 10);
+    if(this.result != undefined) this.result = Math.floor(this.result / 10);
+    if(this.result === 0) this.result = undefined;
   }
 
 
