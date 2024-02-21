@@ -25,11 +25,18 @@
       <button mat-raised-button color="primary" (click)="restart('division')" disabled>Start ÷</button>
     </div>
     <h2>Club 99</h2>
-    <div class="grid grid-cols-3 mt-4 gap-4">
+    <div class="grid grid-cols-3 mb-8 mt-4 gap-4">
       @for(clubIndex of club; track clubIndex){
         <button mat-raised-button color="primary" (click)="startClub(clubIndex)">{{clubIndex}} Club</button>
       }
     </div>
+    <h2>Math Tables</h2>
+    <div class="grid grid-cols-3 mt-4 gap-4">
+      @for(mathIndex of mathTables; track mathIndex){
+    <button mat-raised-button color="primary" (click)="startMathTable(mathIndex)">{{mathIndex}} Table</button>
+    }
+    </div>
+    <mat-slide-toggle [(ngModel)]="randomMath" class="mt-4">Random</mat-slide-toggle>
     }
   </div>
 </main>

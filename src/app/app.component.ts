@@ -14,11 +14,13 @@ import {MatIcon} from "@angular/material/icon";
 import {CountdownComponent} from "./countdown/countdown.component";
 import {ResultsComponent} from "./results/results.component";
 import {MatCardModule} from "@angular/material/card";
+import {MatSlideToggleModule} from "@angular/material/slide-toggle";
+import {FormsModule} from "@angular/forms";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CalculatorComponent, CountdownComponent, ResultsComponent, CommonModule, MatButton, MatSnackBarModule, MatIcon, MatCardModule, MatIconButton],
+  imports: [RouterOutlet, CalculatorComponent, CountdownComponent, ResultsComponent, CommonModule, MatButton, MatSnackBarModule, MatIcon, MatCardModule, MatIconButton, MatSlideToggleModule, FormsModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -31,6 +33,8 @@ export class AppComponent {
   progress: number = 0;
   currentDuration: number = 0;
   club= Array(9).fill(11).map((x,i)=>(i+1)*x);
+  mathTables= Array(9).fill(1).map((x,i)=>(i+1)*x);
+  randomMath: boolean = false;
 
   constructor(private _snackBar: MatSnackBar, private ninetyNineClubService: NinetyNineClubServiceService) {
   }
@@ -116,5 +120,33 @@ export class AppComponent {
         break;
     }
     return {firstDigit, secondDigit};
+  }
+
+  startMathTable(index: number) {
+    this.index = 0;
+    this.results = [];
+    let calculations: Calculation[] = [];
+    let array = Array(10).fill(1).map((x,i) => x+i);
+    if(this.randomMath) array = this.shuffleArray([...array]);
+    array.forEach(x => {
+      calculations.push({firstDigit:index, secondDigit:x, operator:Operators.MULTIPLICATION });
+    })
+    this.calculations = calculations;
+  }
+
+  private shuffleArray<T>(array: number[]): number[] {
+    for (let i = array.length - 1; i > 0; i--) {
+      // Generate a random index from 0 to i
+      const j = Math.floor(Math.random() * (i + 1));
+      // Swap elements at indices i and j
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  }
+
+
+  toggleRandomMathTable($event: any){
+    //this.randomMath = $event.checked;
+
   }
 }
