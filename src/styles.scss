@@ -4,8 +4,10 @@
 @tailwind utilities;
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
-
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  @apply bg-slate-900;
 }
 
 h2{

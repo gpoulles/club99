@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import {CalculatorComponent} from "./calculator/calculator.component";
 import {Calculation} from "./interfaces/calculation.interface";
@@ -17,10 +17,13 @@ import {MatCardModule} from "@angular/material/card";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {FormsModule} from "@angular/forms";
 
+
+import {MenuComponent} from "./menu/menu.component";
+
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CalculatorComponent, CountdownComponent, ResultsComponent, CommonModule, MatButton, MatSnackBarModule, MatIcon, MatCardModule, MatIconButton, MatSlideToggleModule, FormsModule],
+  imports: [RouterOutlet, MenuComponent, CalculatorComponent, CountdownComponent, ResultsComponent, CommonModule, MatButton, MatSnackBarModule, MatIcon, MatCardModule, MatIconButton, MatSlideToggleModule, FormsModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -32,12 +35,11 @@ export class AppComponent {
   results: Result[] =[];
   progress: number = 0;
   currentDuration: number = 0;
-  club= Array(9).fill(11).map((x,i)=>(i+1)*x);
-  mathTables= Array(9).fill(1).map((x,i)=>(i+1)*x);
-  randomMath: boolean = false;
 
   constructor(private _snackBar: MatSnackBar, private ninetyNineClubService: NinetyNineClubServiceService) {
+
   }
+
 
   restart(operator:string){
     this.index = 0;
@@ -66,6 +68,7 @@ export class AppComponent {
     this.index = 0;
     this.results = [];
     this.progress = 0;
+
   }
 
   async startClub(x: number) {
@@ -122,14 +125,13 @@ export class AppComponent {
     return {firstDigit, secondDigit};
   }
 
-  startMathTable(index: number) {
-    this.index = 0;
+  startMathTable($event: {index: number, random: boolean}) {
     this.results = [];
     let calculations: Calculation[] = [];
     let array = Array(10).fill(1).map((x,i) => x+i);
-    if(this.randomMath) array = this.shuffleArray([...array]);
+    if($event.random) array = this.shuffleArray([...array]);
     array.forEach(x => {
-      calculations.push({firstDigit:index, secondDigit:x, operator:Operators.MULTIPLICATION });
+      calculations.push({firstDigit:$event.index, secondDigit:x, operator:Operators.MULTIPLICATION });
     })
     this.calculations = calculations;
   }
@@ -145,8 +147,4 @@ export class AppComponent {
   }
 
 
-  toggleRandomMathTable($event: any){
-    //this.randomMath = $event.checked;
-
-  }
 }
