@@ -1,1 +1,65 @@
-<p>random-calculations works!</p>
+@if (calculations.length) {
+  <mat-card class="min-w-96">
+    <mat-card-content>
+      <div class="flex justify-between items-center">
+        <button mat-icon-button color="primary" (click)="reset()">
+          <mat-icon>chevron_left</mat-icon>
+        </button>
+        <club99-countdown
+          (duration)="setCurrentDuration($event)"
+        ></club99-countdown>
+        <div class="text-slate-600">{{ outOf() }}</div>
+      </div>
+
+      <club99-calculator
+        [calculation]="calculations[index]"
+        [results]="results"
+        [outOf]="outOf()"
+        (nextCalculation)="addResult($event)"
+        (cancel)="reset()"
+        [progress]="progress"
+      ></club99-calculator>
+    </mat-card-content>
+  </mat-card>
+} @else if (!calculations.length && results.length) {
+  <club99-results [results]="results" (back)="reset()"></club99-results>
+}@else{
+<mat-card class="hidden">
+  <mat-card-header>
+    <mat-card-title>Random Calulations</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="grid grid-cols-2 mt-4 gap-4">
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="createCalculations('addition')"
+      >
+        Start +
+      </button>
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="createCalculations('subtraction')"
+      >
+        Start -
+      </button>
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="createCalculations('multiplication')"
+      >
+        Start ×
+      </button>
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="createCalculations('division')"
+        disabled
+      >
+        Start ÷
+      </button>
+    </div>
+  </mat-card-content>
+</mat-card>
+}

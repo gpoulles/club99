@@ -5,22 +5,33 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { FormsModule } from '@angular/forms';
 import { Calculation } from '../../shared/interfaces/calculation.interface';
 import { Operators } from '../../shared/enums/operators.enum';
-import { Result } from '../../shared/interfaces/result.interface';
+import { ModeBaseComponent } from '../../shared/components/mode-base/mode-base.component';
+import { CalculatorComponent } from '../../shared/components/calculator/calculator.component';
+import { CountdownComponent } from '../../shared/components/countdown/countdown.component';
+import { MatIcon } from '@angular/material/icon';
+import { ResultsComponent } from '../../shared/ui/results/results.component';
 
 @Component({
   selector: 'club99-math-tables',
   standalone: true,
-  imports: [MatButtonModule, MatCardModule, MatSlideToggleModule, FormsModule],
+  imports: [
+    MatButtonModule,
+    MatCardModule,
+    MatSlideToggleModule,
+    FormsModule,
+    CalculatorComponent,
+    CountdownComponent,
+    MatIcon,
+    ResultsComponent,
+  ],
   templateUrl: './math-tables.component.html',
   styleUrl: './math-tables.component.css',
 })
-export class MathTablesComponent {
+export class MathTablesComponent extends ModeBaseComponent {
   mathTables = Array(9)
     .fill(1)
     .map((x, i) => (i + 1) * x);
   randomMath = false;
-  calculations: Calculation[] = [];
-  results: Result[] = [];
 
   startMathTable($event: { index: number; random: boolean }) {
     this.results = [];

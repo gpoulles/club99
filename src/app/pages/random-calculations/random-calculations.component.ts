@@ -1,27 +1,40 @@
 import { Component } from '@angular/core';
 import { Calculation } from '../../shared/interfaces/calculation.interface';
 import { Operators } from '../../shared/enums/operators.enum';
-import { Result } from '../../shared/interfaces/result.interface';
+
+import { MatButton, MatIconButton } from '@angular/material/button';
+import {
+  MatCard,
+  MatCardContent,
+  MatCardHeader,
+  MatCardTitle,
+} from '@angular/material/card';
+import { CalculatorComponent } from '../../shared/components/calculator/calculator.component';
+import { CountdownComponent } from '../../shared/components/countdown/countdown.component';
+import { MatIcon } from '@angular/material/icon';
+import { ResultsComponent } from '../../shared/ui/results/results.component';
+import { ModeBaseComponent } from '../../shared/components/mode-base/mode-base.component';
 
 @Component({
   selector: 'club99-random-calculations',
   standalone: true,
-  imports: [],
+  imports: [
+    MatButton,
+    MatCard,
+    MatCardContent,
+    MatCardHeader,
+    MatCardTitle,
+    CalculatorComponent,
+    CountdownComponent,
+    MatIcon,
+    MatIconButton,
+    ResultsComponent,
+  ],
   templateUrl: './random-calculations.component.html',
   styleUrl: './random-calculations.component.css',
 })
-export class RandomCalculationsComponent {
-  calculations: Calculation[] = [];
-  index: number = 0;
-  results: Result[] = [];
-  progress: number = 0;
-
-  restart(operator: string) {
-    this.index = 0;
-    this.results = [];
-    this.calculations = this.createCalculations(operator);
-  }
-  private createCalculations(operator: string) {
+export class RandomCalculationsComponent extends ModeBaseComponent {
+  createCalculations(operator: string) {
     const calculations: Calculation[] = [];
     let i = 0;
     while (i < 10) {
@@ -30,7 +43,7 @@ export class RandomCalculationsComponent {
       calculations.push({ firstDigit, secondDigit, operator });
       i++;
     }
-    return calculations;
+    this.calculations = calculations;
   }
 
   private getDigits(operator: string) {

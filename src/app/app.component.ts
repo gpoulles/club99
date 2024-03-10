@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { CalculatorComponent } from './shared/components/calculator/calculator.component';
-import { Calculation } from './shared/interfaces/calculation.interface';
+
 import { CommonModule } from '@angular/common';
 import { MatButton, MatIconButton } from '@angular/material/button';
-import { Result } from './shared/interfaces/result.interface';
-import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatIcon } from '@angular/material/icon';
 import { CountdownComponent } from './shared/components/countdown/countdown.component';
 import { ResultsComponent } from './shared/ui/results/results.component';
@@ -42,12 +42,5 @@ import { MatMenuModule } from '@angular/material/menu';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  title = 'math';
-  calculations: Calculation[] = [];
-  index: number = 0;
-  results: Result[] = [];
-  progress: number = 0;
-  currentDuration: number = 0;
-
-  constructor(private _snackBar: MatSnackBar) {}
+  title = 'Club99';
 }
