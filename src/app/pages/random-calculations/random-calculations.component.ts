@@ -4,7 +4,7 @@ import { Operators } from '../../shared/enums/operators.enum';
 import { Result } from '../../shared/interfaces/result.interface';
 
 @Component({
-  selector: 'app-random-calculations',
+  selector: 'club99-random-calculations',
   standalone: true,
   imports: [],
   templateUrl: './random-calculations.component.html',

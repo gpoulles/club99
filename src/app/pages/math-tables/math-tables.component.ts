@@ -8,7 +8,7 @@ import { Operators } from '../../shared/enums/operators.enum';
 import { Result } from '../../shared/interfaces/result.interface';
 
 @Component({
-  selector: 'app-math-tables',
+  selector: 'club99-math-tables',
   standalone: true,
   imports: [MatButtonModule, MatCardModule, MatSlideToggleModule, FormsModule],
   templateUrl: './math-tables.component.html',

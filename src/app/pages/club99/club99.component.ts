@@ -11,7 +11,7 @@ import { MatIcon } from '@angular/material/icon';
 import { ResultsComponent } from '../../shared/ui/results/results.component';
 
 @Component({
-  selector: 'app-club99',
+  selector: 'club99-club99',
   standalone: true,
   imports: [
     MatButtonModule,

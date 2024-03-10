@@ -6,24 +6,24 @@
         <button mat-icon-button color="primary" (click)="reset()">
           <mat-icon>chevron_left</mat-icon>
         </button>
-        <app-countdown
+        <club99-countdown
           (duration)="setCurrentDuration($event)"
-        ></app-countdown>
+        ></club99-countdown>
         <div class="text-slate-600">{{ outOf() }}</div>
       </div>
 
-      <app-calculator
+      <club99-calculator
         [calculation]="calculations[index]"
         [results]="results"
         [outOf]="outOf()"
         (nextCalculation)="addResult($event)"
         (cancel)="reset()"
         [progress]="progress"
-      ></app-calculator>
+      ></club99-calculator>
     </mat-card-content>
   </mat-card>
 } @else if (!calculations.length && results.length) {
-  <app-results [results]="results" (back)="reset()"></app-results>
+  <club99-results [results]="results" (back)="reset()"></club99-results>
 }@else{
   <mat-card>
     <mat-card-header>

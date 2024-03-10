@@ -5,7 +5,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-menu',
+  selector: 'club99-menu',
   standalone: true,
   imports: [MatButtonModule, MatCardModule, MatSlideToggleModule, FormsModule],
   templateUrl: './menu.component.html',

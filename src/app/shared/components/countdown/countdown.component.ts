@@ -10,7 +10,7 @@ import { interval, Subject, takeUntil } from 'rxjs';
 import { Duration } from 'luxon';
 
 @Component({
-  selector: 'app-countdown',
+  selector: 'club99-countdown',
   standalone: true,
   imports: [],
   templateUrl: './countdown.component.html',

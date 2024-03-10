@@ -14,7 +14,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
-  selector: 'app-num-pad',
+  selector: 'club99-num-pad',
   standalone: true,
   imports: [MatButtonModule, MatIconModule],
   templateUrl: './num-pad.component.html',

@@ -18,7 +18,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 
 @Component({
-  selector: 'app-root',
+  selector: 'club99-root',
   standalone: true,
   imports: [
     RouterOutlet,
