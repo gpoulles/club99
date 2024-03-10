@@ -1,0 +1,47 @@
+
+@if (calculations.length) {
+  <mat-card class="min-w-96">
+    <mat-card-content>
+      <div class="flex justify-between items-center">
+        <button mat-icon-button color="primary" (click)="reset()">
+          <mat-icon>chevron_left</mat-icon>
+        </button>
+        <app-countdown
+          (duration)="setCurrentDuration($event)"
+        ></app-countdown>
+        <div class="text-slate-600">{{ outOf() }}</div>
+      </div>
+
+      <app-calculator
+        [calculation]="calculations[index]"
+        [results]="results"
+        [outOf]="outOf()"
+        (nextCalculation)="addResult($event)"
+        (cancel)="reset()"
+        [progress]="progress"
+      ></app-calculator>
+    </mat-card-content>
+  </mat-card>
+} @else if (!calculations.length && results.length) {
+  <app-results [results]="results" (back)="reset()"></app-results>
+}@else{
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Club 99</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="grid grid-cols-3 mt-4 gap-4">
+        @for (clubIndex of club; track clubIndex) {
+          <button
+            mat-raised-button
+            color="primary"
+            (click)="startClub(clubIndex)"
+          >
+            {{ clubIndex }}
+          </button>
+        }
+      </div>
+    </mat-card-content>
+  </mat-card>
+}
+
