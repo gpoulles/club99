@@ -1,44 +1,5 @@
-<mat-card>
-  <mat-card-header>
-    <mat-card-title>Club 99</mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
-    <div class="grid grid-cols-3 mt-4 gap-4">
-      @for (clubIndex of club; track clubIndex) {
-        <button
-          mat-raised-button
-          color="primary"
-          (click)="clubStarted.emit(clubIndex)"
-        >
-          {{ clubIndex }}
-        </button>
-      }
-    </div>
-  </mat-card-content>
-</mat-card>
-<mat-card>
-  <mat-card-header>
-    <mat-card-title>Math Tables</mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
-    <div class="grid grid-cols-3 mt-4 gap-4">
-      @for (mathIndex of mathTables; track mathIndex) {
-        <button
-          mat-raised-button
-          color="primary"
-          (click)="
-            mathTableStarted.emit({ index: mathIndex, random: randomMath })
-          "
-        >
-          {{ mathIndex }}
-        </button>
-      }
-    </div>
-    <mat-slide-toggle [(ngModel)]="randomMath" class="mt-4"
-      >Random</mat-slide-toggle
-    >
-  </mat-card-content>
-</mat-card>
+
+
 <mat-card class="hidden">
   <mat-card-header>
     <mat-card-title>Random Calulations</mat-card-title>

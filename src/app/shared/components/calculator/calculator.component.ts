@@ -1,10 +1,10 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Calculation } from '../interfaces/calculation.interface';
+import { Calculation } from '../../interfaces/calculation.interface';
 import { MatIconModule } from '@angular/material/icon';
-import { Result } from '../interfaces/result.interface';
+import { Result } from '../../interfaces/result.interface';
 import { CommonModule } from '@angular/common';
-import { NumPadComponent } from '../num-pad/num-pad.component';
-import { Operators } from '../enums/operators.enum';
+import { NumPadComponent } from '../../ui/num-pad/num-pad.component';
+import { Operators } from '../../enums/operators.enum';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 
