@@ -8,10 +8,9 @@ describe('NumPadComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [NumPadComponent]
-    })
-    .compileComponents();
-    
+      imports: [NumPadComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(NumPadComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

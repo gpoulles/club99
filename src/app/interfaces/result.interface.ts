@@ -1,8 +1,8 @@
-import {Calculation} from "./calculation.interface";
+import { Calculation } from './calculation.interface';
 
-export interface Result{
+export interface Result {
   result: boolean;
   index: number;
-  calculation: Calculation,
-  timestamp: number
+  calculation: Calculation;
+  timestamp: number;
 }

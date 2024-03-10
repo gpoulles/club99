@@ -2,7 +2,7 @@
   @apply max-w-md;
   @apply w-full;
   height: 300px;
-  .swiper-slide{
-    width:300px;
+  .swiper-slide {
+    width: 300px;
   }
 }

@@ -1,11 +1,39 @@
 <div class="grid grid-cols-3 gap-4 justify-center mt-10">
-@for(number of numbers; track number){
-  @if(number !== 0){
-    <button mat-flat-button color="primary" #numButton="matButton" (click)="numberTapped.emit(number)">{{number}}</button>
-  }@else{
-  <button mat-flat-button color="primary" #backSpace (click)="delete.emit(true)"><mat-icon>backspace</mat-icon></button>
-    <button mat-flat-button color="primary" #numButton="matButton" (click)="numberTapped.emit(number)">{{number}}</button>
-    <button mat-flat-button color="primary" #enter (click)="submit.emit(true)"><mat-icon>start</mat-icon></button>
+  @for (number of numbers; track number) {
+    @if (number !== 0) {
+      <button
+        mat-flat-button
+        color="primary"
+        #numButton="matButton"
+        (click)="numberTapped.emit(number)"
+      >
+        {{ number }}
+      </button>
+    } @else {
+      <button
+        mat-flat-button
+        color="primary"
+        #backSpace
+        (click)="delete.emit(true)"
+      >
+        <mat-icon>backspace</mat-icon>
+      </button>
+      <button
+        mat-flat-button
+        color="primary"
+        #numButton="matButton"
+        (click)="numberTapped.emit(number)"
+      >
+        {{ number }}
+      </button>
+      <button
+        mat-flat-button
+        color="primary"
+        #enter
+        (click)="submitted.emit(true)"
+      >
+        <mat-icon>start</mat-icon>
+      </button>
+    }
   }
-}
 </div>

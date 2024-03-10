@@ -1,12 +1,26 @@
-
 <div class="flex justify-center flex-col md:flex-row">
-  <div class="text-5xl text-center">{{calculation.firstDigit}} {{getOperationSymbol()}} {{calculation.secondDigit}} = {{result}}</div>
+  <div class="text-5xl text-center">
+    {{ calculation.firstDigit }} {{ getOperationSymbol() }}
+    {{ calculation.secondDigit }} = {{ result }}
+  </div>
 </div>
-<mat-progress-bar mode="determinate" [value]="progress" class="my-4"></mat-progress-bar>
+<mat-progress-bar
+  mode="determinate"
+  [value]="progress"
+  class="my-4"
+></mat-progress-bar>
 <div class="grid grid-cols-11 justify-center gap-1 mt-2 gap-y-2">
-
   @for (result of results; track result.index) {
-    <div class="dot rounded-full" [class.bg-red-500]="!result.result" [class.bg-green-500]="result.result"></div>
+    <div
+      class="dot rounded-full"
+      [class.bg-red-500]="!result.result"
+      [class.bg-green-500]="result.result"
+    ></div>
   }
 </div>
-<app-num-pad (numberTapped)="addToResult($event)" (clear)="result = 0" (delete)="deleteDigit()" (submit)="check()"></app-num-pad>
+<app-num-pad
+  (numberTapped)="addToResult($event)"
+  (clear)="result = 0"
+  (delete)="deleteDigit()"
+  (submitted)="check()"
+></app-num-pad>
